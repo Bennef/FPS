@@ -9,7 +9,6 @@ namespace Scripts.Player
         
         void Start() => _characterController = FindObjectOfType<CharacterController>();
 
-        // Update is called once per frame
         void Update()
         {
             if (_characterController.isGrounded && _characterController.velocity.magnitude > 2f && !_aSrc.isPlaying)

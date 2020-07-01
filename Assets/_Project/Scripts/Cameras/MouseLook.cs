@@ -20,7 +20,7 @@ namespace Scripts.Cameras
         void Update()
         {
             _xRotation -= _inputHandler.GetMouseY() * _mouseSensitivity * Time.deltaTime;
-            _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
+            _xRotation = Mathf.Clamp(_xRotation, -45f, 45f);
 
             transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
 

@@ -27,7 +27,7 @@ namespace Scripts.Shooting
             _aSrc.Play();
             Instantiate(_laserShot, _laserOrigin.position, _laserOrigin.rotation * Quaternion.Euler(90, 0, 0));
             //_laserShot.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-            print(_laserOrigin.position);
+            //print(_laserOrigin.position);
         }
     }
 }
