@@ -1,27 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DoorPanel : MonoBehaviour, IInteractible
 {
-    public bool HasBeenInteractedWith { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public bool HasBeenInteractedWith { get; set; }
 
-    [SerializeField] Transform _doorToUnlock;
+    [SerializeField] private GameObject _doorToUnlock;
+    [SerializeField] private AudioClip _doorOpening, _doorClosing;
+    
+    private GameObject _panel;
+    private Animator _animator;
+    private AudioSource _aSrc;
+
+    private void Start()
+    {
+        _animator = _doorToUnlock.GetComponent<Animator>();
+        _aSrc = _doorToUnlock.GetComponent<AudioSource>();
+    }
 
     public void Interact()
     {
-        throw new System.NotImplementedException();
-    }
+        if (_animator.GetBool("isOpen") == false)
+        {
+            _animator.SetBool("isOpen", true);
+            _aSrc.PlayOneShot(_doorOpening);
+        }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        else if (_animator.GetBool("isOpen") == true)
+        {
+            _animator.SetBool("isOpen", false);
+            _aSrc.PlayOneShot(_doorClosing);
+        } 
     }
 }

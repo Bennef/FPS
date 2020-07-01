@@ -43,7 +43,7 @@ namespace Scripts.Cameras
                 if (left == true)
                 {
                     if (!_anim.isPlaying)
-                    {//Waits until no animation is playing to play the next
+                    {  //Waits until no animation is playing to play the next
                         _anim.Play("walkLeft");
                         left = false;
                         right = true;
