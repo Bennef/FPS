@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Footsteps {
+namespace Footsteps
+{
 
-	public class CameraFollow : MonoBehaviour {
+    public class CameraFollow : MonoBehaviour {
 
 		[SerializeField] Transform target;
 		[SerializeField] float followLerpFactor = 5f;

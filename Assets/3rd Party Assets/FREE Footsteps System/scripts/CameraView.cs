@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Footsteps {
+namespace Footsteps
+{
 
-	public class CameraView : MonoBehaviour {
+    public class CameraView : MonoBehaviour {
 
 		[SerializeField] float minTiltAngle = -70f;
 		[SerializeField] float maxTiltAngle = 80f;

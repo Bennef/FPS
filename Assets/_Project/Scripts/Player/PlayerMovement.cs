@@ -5,13 +5,14 @@ namespace Scripts.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private float _speed = 12f;
-        [SerializeField] private float _runSpeed = 24f;
-        [SerializeField] private float _jumpHeight = 30f;
-        [SerializeField] private const float _GRAVITY = -30f; 
+        [SerializeField] private float _speed;
+        [SerializeField] private float _walkSpeed = 8f;
+        [SerializeField] private float _runSpeed = 16f;
+        [SerializeField] private float _jumpHeight = 12f;
         [SerializeField] private float _groundDistance = 0.4f;
         [SerializeField] private LayerMask _groundmask;
 
+        private const float _GRAVITY = -30f;
         private CharacterController _controller;
         private InputHandler _inputHandler;
         private Transform _groundCheck;
@@ -28,6 +29,8 @@ namespace Scripts.Player
         {
             if (_inputHandler.GetRunButtonDown())
                 _speed = _runSpeed;
+            else
+                _speed = _walkSpeed;
 
             if (IsGrounded() && _velocity.y < 0)
                 _velocity.y = -2f;
@@ -39,7 +42,7 @@ namespace Scripts.Player
 
             _controller.Move(move * _speed * Time.deltaTime);
 
-            if (Input.GetButtonDown("Jump") && IsGrounded())
+            if (_inputHandler.GetJumpButton() && IsGrounded())
                 _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _GRAVITY / 4);
 
             _velocity.y += _GRAVITY * Time.deltaTime;

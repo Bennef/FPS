@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Footsteps {
+namespace Footsteps
+{
 
-	[RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController))]
 	public class FirstPersonController : MonoBehaviour {
 
 		public Vector3 velocity { get; private set; }

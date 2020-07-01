@@ -8,9 +8,10 @@
 
 using UnityEngine;
 
-namespace Footsteps {
+namespace Footsteps
+{
 
-	public enum TriggeredBy {
+    public enum TriggeredBy {
 		COLLISION_DETECTION,	// The footstep sound will be played when the physical foot collides with the ground.
 		TRAVELED_DISTANCE		// The footstep sound will be played after the character has traveled a certain distance
 	}

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Footsteps {
+namespace Footsteps
+{
 
-	public class DemoUI : MonoBehaviour {
+    public class DemoUI : MonoBehaviour {
 
 		[SerializeField] GameObject topDownController;
 		[SerializeField] GameObject topDownCamera;

@@ -13,8 +13,13 @@ namespace Scripts.Inputs
 
         public bool GetRighttButtonDown() => Input.GetButton("Strafe Right");
 
-        public bool GetShootButton() => Input.GetButton("Shoot");
+        public bool GetJumpButton() => Input.GetButton("Jump");
+        
         public bool GetRunButtonDown() => Input.GetButton("Run");
+
+        public bool GetCrouchButtonDown() => Input.GetButton("Crouch");
+
+        public bool GetShootButton() => Input.GetButtonDown("Shoot");
 
         public bool GetReloadButton() => Input.GetButtonDown("Reload");
 
@@ -24,10 +29,15 @@ namespace Scripts.Inputs
 
         public float GetVerticalAxis() => Input.GetAxis("Vertical");
 
+        public float GetMouseX() => Input.GetAxis("Mouse X");
+
+        public float GetMouseY() => Input.GetAxis("Mouse Y");
+
         public bool PlayerIsWalking()
         {
             if (GetHorizontalAxis() != 0 || GetVerticalAxis() != 0)
                 return true;
+
             return false;
         }
     }

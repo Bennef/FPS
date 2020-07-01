@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Footsteps {
+namespace Footsteps
+{
 
-	[RequireComponent(typeof(Rigidbody), typeof(Animator))]
+    [RequireComponent(typeof(Rigidbody), typeof(Animator))]
 	public class TopDownController : MonoBehaviour {
 
 		[SerializeField] Transform cameraPivot;
