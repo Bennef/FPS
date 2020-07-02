@@ -102,7 +102,6 @@ namespace Scripts.Interactables
 
         void SetPanelColour(Material matToSet)
         {
-            print("col");
             _renderer.material = matToSet;
             if (_otherPanel != null)
                 _otherPanel.SetPanelColour(matToSet);

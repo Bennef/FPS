@@ -7,6 +7,7 @@ namespace Scripts.Shooting
     {
         private InputHandler _inputHandler;
         private AudioSource _aSrc;
+        private ParticleSystem _muzzleFlash;
         [SerializeField] private Transform _laserOrigin;
         [SerializeField] private GameObject _laserShot;
 
@@ -14,6 +15,7 @@ namespace Scripts.Shooting
         {
             _inputHandler = FindObjectOfType<InputHandler>();
             _aSrc = GetComponent<AudioSource>();
+            _muzzleFlash = GetComponentInChildren<ParticleSystem>();
         }
 
         void Update()
@@ -26,6 +28,7 @@ namespace Scripts.Shooting
         {
             _aSrc.Play();
             Instantiate(_laserShot, _laserOrigin.position, _laserOrigin.rotation * Quaternion.Euler(90, 0, 0));
+            _muzzleFlash.Play();
         }
     }
 }
