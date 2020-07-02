@@ -12,11 +12,11 @@ namespace Scripts.Inputs
 
         public bool GetRighttButtonDown() => Input.GetButton("Strafe Right");
 
-        public bool GetJumpButton() => Input.GetButton("Jump");
+        public bool GetJumpButton() => Input.GetButtonDown("Jump");
         
         public bool GetRunButtonDown() => Input.GetButton("Run");
 
-        public bool GetCrouchButtonDown() => Input.GetButton("Crouch");
+        public bool GetCrouchButtonDown() => Input.GetButtonDown("Crouch");
 
         public bool GetShootButton() => Input.GetButtonDown("Shoot");
 

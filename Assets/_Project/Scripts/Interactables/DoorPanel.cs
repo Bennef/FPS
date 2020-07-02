@@ -1,62 +1,111 @@
 ﻿using Scripts.Inputs;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class DoorPanel : MonoBehaviour, IInteractible
+namespace Scripts.Interactables
 {
-    public bool HasBeenInteractedWith { get; set; }
-    public bool CanBeInteractedWith { get; set; }
-
-    [SerializeField] private GameObject _doorToUnlock;
-    [SerializeField] private AudioClip _doorOpening, _doorClosing;
-
-    private InputHandler _inputHandler;
-    private TextMeshProUGUI _interactPrompt;
-    private GameObject _panel;
-    private Animator _animator;
-    private AudioSource _aSrc;
-
-    private void Start()
+    public class DoorPanel : MonoBehaviour, IInteractible
     {
-        _inputHandler = FindObjectOfType<InputHandler>();
-        _animator = _doorToUnlock.GetComponent<Animator>();
-        _interactPrompt = GetComponentInChildren<TextMeshProUGUI>();
-        _aSrc = _doorToUnlock.GetComponent<AudioSource>();
-    }
+        [SerializeField] private GameObject _doorToUnlock;
+        [SerializeField] private AudioClip _doorOpening, _doorClosing;
+        [SerializeField] private Material _closeMat, _openMat;
+        [SerializeField] private DoorPanel _otherPanel;
 
-    private void Update()
-    {
-        if (CanBeInteractedWith)
+        private InputHandler _inputHandler;
+        private TextMeshProUGUI _interactPrompt;
+        private Animator _animator;
+        private AudioSource _aSrc;
+        private bool _isAnimating, _promptShowing;
+        private Renderer _renderer;
+
+        public bool HasBeenInteractedWith { get; set; }
+        public bool CanBeInteractedWith { get; set; }
+
+        private void Start()
         {
-            ShowPrompt();
-
-            if (_inputHandler.GetInteractButton())
-                Interact();
+            _inputHandler = FindObjectOfType<InputHandler>();
+            _animator = _doorToUnlock.GetComponent<Animator>();
+            _interactPrompt = GetComponentInChildren<TextMeshProUGUI>();
+            _aSrc = _doorToUnlock.GetComponent<AudioSource>();
+            _renderer = GetComponent<Renderer>();
         }
-        else
-            HidePrompt();
-    }
 
-    private void OnTriggerEnter(Collider other) => CanBeInteractedWith = true;
+        private void Update()
+        {
+            if (CanBeInteractedWith && !_isAnimating)
+            {
+                if (!_promptShowing)
+                    ShowPrompt();
 
-    private void OnTriggerExit(Collider other) => CanBeInteractedWith = false;
+                if (_inputHandler.GetInteractButton())
+                    Interact();
+            }
+            else if (_promptShowing)
+                HidePrompt();
+        }
 
-    void ShowPrompt() => _interactPrompt.text = "[E]";
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag("Interaction Collider"))
+                CanBeInteractedWith = true;
+        }
 
-    void HidePrompt() => _interactPrompt.text = "";
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Interaction Collider"))
+                CanBeInteractedWith = false;
+        }
 
-    public void Interact()
-    {
-        if (_animator.GetBool("isOpen") == false)
+        void ShowPrompt()
+        {
+            _interactPrompt.text = "[E]";
+            _promptShowing = true;
+        }
+
+        void HidePrompt()
+        {
+            _interactPrompt.text = "";
+            _promptShowing = false;
+        }
+
+        public void Interact()
+        {
+            if (_animator.GetBool("isOpen") == false)
+                OpenDoor();
+            else if (_animator.GetBool("isOpen") == true)
+                CloseDoor();
+        }
+
+        void OpenDoor()
         {
             _animator.SetBool("isOpen", true);
             _aSrc.PlayOneShot(_doorOpening);
+            SetPanelColour(_openMat);
+            StartCoroutine(Delay(0.4f));
         }
 
-        else if (_animator.GetBool("isOpen") == true)
+        void CloseDoor()
         {
             _animator.SetBool("isOpen", false);
             _aSrc.PlayOneShot(_doorClosing);
-        } 
+            SetPanelColour(_closeMat);
+            StartCoroutine(Delay(0.4f));
+        }
+
+        IEnumerator Delay(float seconds)
+        {
+            _isAnimating = true;
+            yield return new WaitForSeconds(0.4f);
+            _isAnimating = false;
+        }
+
+        void SetPanelColour(Material matToSet)
+        {
+            print("col");
+            _renderer.material = matToSet;
+            if (_otherPanel != null)
+                _otherPanel.SetPanelColour(matToSet);
+        }
     }
 }
