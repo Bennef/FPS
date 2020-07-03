@@ -20,7 +20,7 @@ namespace Scripts.Shooting
 
         void Update()
         {
-            if (_inputHandler.GetShootButton())
+            if (_inputHandler.GetShootButton() && CompareTag("Player Gun"))
                 Shoot();
         }
 
