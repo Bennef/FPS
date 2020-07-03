@@ -9,13 +9,13 @@ namespace FORGE3D
         private readonly List<ParticleCollisionEvent> _collisionEvents = new List<ParticleCollisionEvent>();
         private ParticleSystem _ps;
 
-        private void Start()
+        void Start()
         {
             _ps = GetComponent<ParticleSystem>();
         }
 
         // On particle collision
-        private void OnParticleCollision(GameObject other)
+        void OnParticleCollision(GameObject other)
         {
             var numCollisionEvents = _ps.GetCollisionEvents(other, _collisionEvents);
 

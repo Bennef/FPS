@@ -18,7 +18,7 @@ namespace FORGE3D
         public Text missileTypeLabel;
 
         // Use this for initialization
-        private void Start()
+        void Start()
         {
             missileType = F3DMissile.MissileType.Unguided;
             missileTypeLabel.text = "Missile type: Unguided";
@@ -33,7 +33,7 @@ namespace FORGE3D
 
 
         // Processes input for launching missile
-        private void ProcessInput()
+        void ProcessInput()
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -71,7 +71,7 @@ namespace FORGE3D
         }
 
         // Update is called once per frame
-        private void Update()
+        void Update()
         {
             ProcessInput();
         }

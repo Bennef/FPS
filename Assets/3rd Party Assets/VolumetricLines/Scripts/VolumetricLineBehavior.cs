@@ -196,7 +196,7 @@ namespace VolumetricLines
 		/// <summary>
 		/// Creates a copy of the template material for this instance
 		/// </summary>
-		private void CreateMaterial()
+		void CreateMaterial()
 		{
 			if (null == m_material || null == GetComponent<MeshRenderer>().sharedMaterial)
 			{
@@ -216,7 +216,7 @@ namespace VolumetricLines
 		/// <summary>
 		/// Destroys the copy of the template material which was used for this instance
 		/// </summary>
-		private void DestroyMaterial()
+		void DestroyMaterial()
 		{
 			if (null != m_material)
 			{
@@ -247,7 +247,7 @@ namespace VolumetricLines
 		/// <summary>
 		/// Sets all material properties (color, width, light saber factor, start-, endpos)
 		/// </summary>
-		private void SetAllMaterialProperties()
+		void SetAllMaterialProperties()
 		{
 			SetStartAndEndPoints(m_startPos, m_endPos);
 

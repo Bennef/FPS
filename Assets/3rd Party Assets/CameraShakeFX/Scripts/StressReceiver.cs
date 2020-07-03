@@ -12,7 +12,7 @@ public class StressReceiver : MonoBehaviour
     [Tooltip("Maximum translation that the gameobject can receive when applying the shake effect.")]
     public Vector3 MaximumTranslationShake = Vector3.one * .75f;
 
-    private void Update()
+    void Update()
     {
         float shake = Mathf.Pow(_trauma, TraumaExponent);
         /* Only apply this when there is active trauma */

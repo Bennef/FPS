@@ -22,7 +22,7 @@ namespace Scripts.Interactables
         public bool HasBeenInteractedWith { get; set; }
         public bool CanBeInteractedWith { get; set; }
 
-        private void Start()
+        void Start()
         {
             _inputHandler = FindObjectOfType<InputHandler>();
             _animator = _doorToUnlock.GetComponent<Animator>();
@@ -31,7 +31,7 @@ namespace Scripts.Interactables
             _renderer = GetComponent<Renderer>();
         }
 
-        private void Update()
+        void Update()
         {
             if (CanBeInteractedWith && !_isAnimating)
             {
@@ -45,13 +45,13 @@ namespace Scripts.Interactables
                 HidePrompt();
         }
 
-        private void OnTriggerStay(Collider other)
+        void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Interaction Collider"))
                 CanBeInteractedWith = true;
         }
 
-        private void OnTriggerExit(Collider other)
+        void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("Interaction Collider"))
                 CanBeInteractedWith = false;

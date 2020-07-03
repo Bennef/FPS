@@ -20,7 +20,7 @@ namespace FORGE3D
 
         private int alphaID;
 
-        private void Awake()
+        void Awake()
         {
             transform = GetComponent<Transform>();
             meshRenderer = GetComponent<MeshRenderer>();
@@ -38,13 +38,13 @@ namespace FORGE3D
             transform.localRotation = transform.localRotation * Quaternion.Euler(0, 0, Random.Range(-360, 360));
         }
 
-        private void ToggleGrow()
+        void ToggleGrow()
         {
             grow = !grow;
         }
 
         // Update is called once per frame
-        private void Update()
+        void Update()
         {
             transform.Rotate(0f, 0f, RotationSpeed * Time.deltaTime);
             if (grow)

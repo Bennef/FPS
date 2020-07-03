@@ -248,7 +248,7 @@ namespace VolumetricLines
 		/// <summary>
 		/// Sets all material properties (color, width, light saber factor)
 		/// </summary>
-		private void SetAllMaterialProperties()
+		void SetAllMaterialProperties()
 		{
 			LineColor = LineColor;
 			LineWidth = LineWidth;

@@ -42,7 +42,7 @@ namespace FORGE3D
         private MeshRenderer meshRenderer;
         public F3DMissileLauncher launcher;
 
-        private void Awake()
+        void Awake()
         {
             // Cache transform and get all particle systems attached
             transform = GetComponent<Transform>();
@@ -67,7 +67,7 @@ namespace FORGE3D
         }
 
         // Stop attached particle systems emission and allow them to fade out before despawning
-        private void Delay()
+        void Delay()
         {
             if (particles.Length > 0 && delayedParticles.Length > 0)
             {
@@ -93,12 +93,12 @@ namespace FORGE3D
         }
 
         // Despawn routine
-        private void OnMissileDestroy()
+        void OnMissileDestroy()
         {
             F3DPoolManager.Pools["GeneratedPool"].Despawn(transform);
         }
 
-        private void OnHit()
+        void OnHit()
         {
             meshRenderer.enabled = false;
             isHit = true;
@@ -112,7 +112,7 @@ namespace FORGE3D
             }
         }
 
-        private void Update()
+        void Update()
         {
             // If something was hit
             if (isHit)

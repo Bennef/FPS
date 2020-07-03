@@ -47,7 +47,7 @@ namespace FORGE3D
         public Animator[] Animators;
 
 
-        private void Awake()
+        void Awake()
         {
             headTransform = Swivel.GetComponent<Transform>();
             barrelTransform = Mount.GetComponent<Transform>();
@@ -72,7 +72,7 @@ namespace FORGE3D
         }
 
         // Use this for initialization
-        private void Start()
+        void Start()
         {
             targetPos = headTransform.transform.position + headTransform.transform.forward * 100f;
             defaultDir = Swivel.transform.forward;
@@ -99,7 +99,7 @@ namespace FORGE3D
         
         
 
-        private void Update()
+        void Update()
         {
             //return;
             if (DebugTarget != null)

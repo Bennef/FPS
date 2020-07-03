@@ -15,14 +15,14 @@ namespace FORGE3D
         private float heatBias = 0f;
 
         // Use this for initialization
-        private void Start()
+        void Start()
         {
             _burnoutId = Shader.PropertyToID("_Burnout");
             _turretParts = GetComponentsInChildren<MeshRenderer>();
         }
 
         // Update is called once per frame
-        private void Update()
+        void Update()
         {
             burnout = Mathf.Lerp(0, 1f, Mathf.Sin(Time.time));
 

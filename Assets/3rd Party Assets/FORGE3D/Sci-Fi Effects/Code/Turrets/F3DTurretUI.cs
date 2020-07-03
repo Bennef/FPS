@@ -24,7 +24,7 @@ namespace FORGE3D
             _fxControllers = new List<F3DFXController>(FindObjectsOfType<F3DFXController>());
         }
 
-        private void Start()
+        void Start()
         {
             SetWeaponTypeText();
         }
@@ -44,7 +44,7 @@ namespace FORGE3D
             ToggleWeaponType(false);
         }
 
-        private void ToggleWeaponType(bool next)
+        void ToggleWeaponType(bool next)
         {
             foreach (var _fx in _fxControllers)
             {
@@ -56,7 +56,7 @@ namespace FORGE3D
             SetWeaponTypeText();
         }
 
-        private void Update()
+        void Update()
         {
             // Switch weapon types using keyboard keys
             if (Input.GetKeyDown(KeyCode.E))

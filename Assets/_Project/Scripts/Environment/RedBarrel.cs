@@ -6,7 +6,7 @@ namespace Scripts.Environment
     {
         [SerializeField] private GameObject _explosion;
 
-        private void OnCollisionEnter(Collision collision)
+        void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Laser Shot"))
                 Explode();

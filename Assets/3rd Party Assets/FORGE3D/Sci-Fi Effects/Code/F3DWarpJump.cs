@@ -16,7 +16,7 @@ namespace FORGE3D
         private bool isWarping;
 
         // Use this for initialization
-        private void Start()
+        void Start()
         {
             if (SendOnSpawned)
                 BroadcastMessage("OnSpawned", SendMessageOptions.DontRequireReceiver);
@@ -25,7 +25,7 @@ namespace FORGE3D
                 F3DTime.time.AddTimer(4, Reset);
         }
 
-        private void Reset()
+        void Reset()
         {
             BroadcastMessage("OnSpawned", SendMessageOptions.DontRequireReceiver);
 
@@ -45,19 +45,19 @@ namespace FORGE3D
             F3DTime.time.AddTimer(3, 1, OnWarp);
         }
 
-        private void OnWarp()
+        void OnWarp()
         {
             isWarping = true;
         }
 
-        private void ShiftShipPosition()
+        void ShiftShipPosition()
         {
             WarpSpark.transform.localPosition = Vector3.Lerp(WarpSpark.transform.localPosition, ShipJumpEndPoint,
                 Time.deltaTime * ShipJumpSpeed);
             ShipPos.position = WarpSpark.transform.position;
         }
 
-        private void Update()
+        void Update()
         {
             if (isWarping)
                 ShiftShipPosition();

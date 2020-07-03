@@ -17,7 +17,7 @@ namespace FORGE3D
             CheckForFire();
         }
 
-        private void LateUpdate()
+        void LateUpdate()
         {
             CheckForTurn();
         }

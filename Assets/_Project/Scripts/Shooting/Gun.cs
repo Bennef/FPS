@@ -24,7 +24,7 @@ namespace Scripts.Shooting
                 Shoot();
         }
 
-        private void Shoot()
+        void Shoot()
         {
             _aSrc.Play();
             Instantiate(_laserShot, _laserOrigin.position, _laserOrigin.rotation * Quaternion.Euler(90, 0, 0));

@@ -18,7 +18,7 @@ namespace Scripts.Player
         private Transform _groundCheck;
         private Vector3 _velocity;
 
-        private void Start()
+        void Start()
         {
             _controller = FindObjectOfType<CharacterController>();
             _inputHandler= FindObjectOfType<InputHandler>();
@@ -50,6 +50,6 @@ namespace Scripts.Player
             _controller.Move(_velocity * Time.deltaTime);
         }
 
-        public bool IsGrounded() => Physics.CheckSphere(_groundCheck.position, _groundDistance, _groundmask);
+        bool IsGrounded() => Physics.CheckSphere(_groundCheck.position, _groundDistance, _groundmask);
     }
 }

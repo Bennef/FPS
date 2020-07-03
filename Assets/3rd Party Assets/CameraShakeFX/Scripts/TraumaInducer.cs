@@ -1,4 +1,4 @@
- using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 /* Example script to apply trauma to the camera or any game object */
@@ -34,7 +34,7 @@ public class TraumaInducer : MonoBehaviour
     }
 
     /* Search for all the particle system in the game objects children */
-    private void PlayParticles()
+    void PlayParticles()
     {
         var children = transform.GetComponentsInChildren<ParticleSystem>();
         for(var i  = 0; i < children.Length; ++i)

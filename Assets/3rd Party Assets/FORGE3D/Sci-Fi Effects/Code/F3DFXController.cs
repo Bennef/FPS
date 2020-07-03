@@ -92,7 +92,7 @@ namespace FORGE3D
         public Transform laserImpulseImpact;
         public float laserImpulseOffset;
 
-        private void Awake()
+        void Awake()
         {
             // Initialize singleton  
             instance = this;
@@ -127,7 +127,7 @@ namespace FORGE3D
         }
 
         // Advance to next turret socket
-        private void AdvanceSocket()
+        void AdvanceSocket()
         {
             curSocket++;
             if (curSocket >= TurretSocket.Length)
@@ -234,7 +234,7 @@ namespace FORGE3D
         }
 
         // Fire vulcan weapon
-        private void Vulcan()
+        void Vulcan()
         {
             // Get random rotation that offset spawned projectile
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
@@ -273,7 +273,7 @@ namespace FORGE3D
         }
 
         // Fire sologun weapon
-        private void SoloGun()
+        void SoloGun()
         {
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
             F3DPoolManager.Pools["GeneratedPool"].Spawn(soloGunMuzzle, TurretSocket[curSocket].position,
@@ -300,7 +300,7 @@ namespace FORGE3D
         }
 
         // Fire sniper weapon
-        private void Sniper()
+        void Sniper()
         {
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
 
@@ -329,7 +329,7 @@ namespace FORGE3D
         }
 
         // Fire shotgun weapon
-        private void ShotGun()
+        void ShotGun()
         {
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
             F3DPoolManager.Pools["GeneratedPool"].Spawn(shotGunMuzzle, TurretSocket[curSocket].position,
@@ -343,7 +343,7 @@ namespace FORGE3D
         }
 
         // Fire seeker weapon
-        private void Seeker()
+        void Seeker()
         {
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
             F3DPoolManager.Pools["GeneratedPool"].Spawn(seekerMuzzle, TurretSocket[curSocket].position,
@@ -369,7 +369,7 @@ namespace FORGE3D
         }
 
         // Fire rail gun weapon
-        private void RailGun()
+        void RailGun()
         {
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
             F3DPoolManager.Pools["GeneratedPool"].Spawn(railgunMuzzle, TurretSocket[curSocket].position,
@@ -397,7 +397,7 @@ namespace FORGE3D
         }
 
         // Fire plasma gun weapon
-        private void PlasmaGun()
+        void PlasmaGun()
         {
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
             F3DPoolManager.Pools["GeneratedPool"].Spawn(plasmagunMuzzle, TurretSocket[curSocket].position,
@@ -423,7 +423,7 @@ namespace FORGE3D
         }
 
         // Fire plasma beam weapon
-        private void PlasmaBeam()
+        void PlasmaBeam()
         {
             for (var i = 0; i < TurretSocket.Length; i++)
             {
@@ -436,7 +436,7 @@ namespace FORGE3D
         }
 
         // Fire heavy beam weapon
-        private void PlasmaBeamHeavy()
+        void PlasmaBeamHeavy()
         {
             for (var i = 0; i < TurretSocket.Length; i++)
             {
@@ -449,7 +449,7 @@ namespace FORGE3D
         }
 
         // Fire lightning gun weapon
-        private void LightningGun()
+        void LightningGun()
         {
             for (var i = 0; i < TurretSocket.Length; i++)
             {
@@ -462,7 +462,7 @@ namespace FORGE3D
         }
 
         // Fire flames weapon
-        private void FlameRed()
+        void FlameRed()
         {
             for (var i = 0; i < TurretSocket.Length; i++)
             {
@@ -475,7 +475,7 @@ namespace FORGE3D
         }
 
         // Fire laser pulse weapon
-        private void LaserImpulse()
+        void LaserImpulse()
         {
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
             F3DPoolManager.Pools["GeneratedPool"].Spawn(laserImpulseMuzzle, TurretSocket[curSocket].position,

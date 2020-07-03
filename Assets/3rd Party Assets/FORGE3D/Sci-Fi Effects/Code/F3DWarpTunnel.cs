@@ -10,7 +10,7 @@ namespace FORGE3D
         private float angle;
 
         // Use this for initialization
-        private void Start()
+        void Start()
         {
             StartCoroutine(RandomDirection());
         }
@@ -25,7 +25,7 @@ namespace FORGE3D
         }
 
         // Update is called once per frame
-        private void Update()
+        void Update()
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle),
                 Time.deltaTime * RotationFactor);
