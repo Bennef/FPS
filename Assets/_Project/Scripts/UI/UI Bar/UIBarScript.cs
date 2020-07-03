@@ -63,20 +63,30 @@ namespace Scripts.UI
 
             //the location of the filler object when the HP is at 0 depends on the FillStyle
             if (FillStyle == FillStyles.horizontal)
+            {
                 Mask1 = new Vector3(FRT.position.x + FRT.rect.width, FRT.position.y, FRT.position.z);
+            }
             else
+            {
                 Mask1 = new Vector3(FRT.position.x, FRT.position.y + FRT.rect.height, FRT.position.z);
+            }
         }
 
         void Update()
         {
             //set the Update Category (is the HP going up, down, or not moving)
             if (Mathf.Round(Value * 100f) / 100f == Mathf.Round(NewValue * 100f) / 100f)
+            {
                 UpdateCategory = Categories.NA;
+            }
             else if (Value > NewValue)
+            {
                 UpdateCategory = Categories.decrease;
+            }
             else if (Value < NewValue)
+            {
                 UpdateCategory = Categories.increase;
+            }
 
             //Update the Mask locations (needed if you are going to move stuff arround)
             RectTransform MRT = Mask.transform as RectTransform;
@@ -108,9 +118,13 @@ namespace Scripts.UI
             foreach (CriteriaRule CR in CriteriaRules)
             {
                 if (CR.IsImage())
+                {
                     CR.DefaultColor = HPColor.Evaluate(Value);
+                }
                 else
+                {
                     CR.DefaultColor = TextColor.Evaluate(Value);
+                }
 
                 CR.Use(Mathf.Round(Value * 100f) / 100f);
             }
@@ -118,11 +132,16 @@ namespace Scripts.UI
             //Execute Each Update Animation Rule
             foreach (UpdateAnimationRule UAR in UpdateAnimationRules)
             {
+
                 if (StartAnimate)
                 {
                     if (UAR.Category.ToString() == UpdateCategory.ToString())
+                    {
                         UAR.StartAnimation = true;
+                    }
+
                 }
+
                 UAR.Use();
             }
 

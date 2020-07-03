@@ -4,15 +4,20 @@ namespace Scripts.Player
 {
     public class Footsteps : MonoBehaviour
     {
-        [SerializeField] private AudioSource _aSrc;
-        CharacterController _characterController;
-        
-        void Start() => _characterController = FindObjectOfType<CharacterController>();
+        [SerializeField] private AudioClip[] _footsteps;
 
-        void Update()
+        private AudioSource _aSrc;
+        private AudioClip _footstepClipToPlay;
+
+        void Start() => _aSrc = GetComponent<AudioSource>();
+
+        void PlayFootstepSound()
         {
-            if (_characterController.isGrounded && _characterController.velocity.magnitude > 2f && !_aSrc.isPlaying)
-                _aSrc.Play(); // random clip of footsteps
+            print("s");
+            int index = Random.Range(0, _footsteps.Length);
+            _footstepClipToPlay = _footsteps[index];
+            _aSrc.clip = _footstepClipToPlay;
+            _aSrc.Play();
         }
     }
 }
