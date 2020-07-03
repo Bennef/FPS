@@ -81,19 +81,19 @@ namespace Scripts.Interactables
         {
             _animator.SetBool("isOpen", true);
             _aSrc.PlayOneShot(_doorOpening);
-            SetPanelColour(_openMat);
-            StartCoroutine(Delay(0.4f));
+            //SetPanelColour(_openMat); //causes stack overflow error
+            StartCoroutine(Delay());
         }
 
         void CloseDoor()
         {
             _animator.SetBool("isOpen", false);
             _aSrc.PlayOneShot(_doorClosing);
-            SetPanelColour(_closeMat);
-            StartCoroutine(Delay(0.4f));
+            //SetPanelColour(_closeMat); //causes stack overflow error
+            StartCoroutine(Delay());
         }
 
-        IEnumerator Delay(float seconds)
+        IEnumerator Delay()
         {
             _isAnimating = true;
             yield return new WaitForSeconds(0.4f);
