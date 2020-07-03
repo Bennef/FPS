@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1061223223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473595419981123628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0daa1aa88896f8e46937e51a3bfab48e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _laserOrigin: {fileID: 7496628490015259608}
-  _laserShot: {fileID: 9202132689939759643, guid: a202dbc24dc453147876d12d77d49daa,
-    type: 3}
 --- !u!82 &1061223224
 AudioSource:
   m_ObjectHideFlags: 0
@@ -111,6 +96,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1061223223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473595419981123628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daa1aa88896f8e46937e51a3bfab48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _laserOrigin: {fileID: 7496628490015259608}
+  _laserShot: {fileID: 9202132689939759643, guid: a202dbc24dc453147876d12d77d49daa,
+    type: 3}
 --- !u!1 &1035790504407245405
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 3353015731539053858}
+  _footsteps: []
   left: 0
   right: 0
 --- !u!1 &5169261098508017522
